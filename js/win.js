@@ -20,6 +20,8 @@ var win = function(reason) {
 
 	var messages = ["You win!", "Great job!", "Congratulations!"];
 	var randomMessage = messages[Math.floor(3 * Math.random())];
+	const timeOver = Date.now();
+	randomMessage += " (" +timeOver+")";
 
 	$('#win-congratulation').text(randomMessage);
 
@@ -34,7 +36,7 @@ var win = function(reason) {
 	if (!areThereMoreLevels()) {
 		// game finished
 		$('#win-message').append("<br><br>You mastered all the lessons of The Deadlock Empire. Thank you for playing!");
-		$('#win-message').append('<br>Any thoughts about the game or ideas for improvement? We\'d like to hear those! Just fill out <a href="http://goo.gl/forms/i05ukNUMmB" target="_blank">this form</a>.');
+		$('#win-message').append('<br>' + timeOver);
 		$('#win-next-level').hide();
 	} else {
 		$('#win-next-level').show();
